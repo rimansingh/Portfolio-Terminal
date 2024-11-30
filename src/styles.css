@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes matrix {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  font-family: 'Fira Code', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000000, #000000),
+              url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ:Q0Q5RUJFRTk5ODY4ODlFMTExOEU5QkY4REY1NjY4NzA4MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDNDlFQkVFOTk4Njg4OUUxMTE4RTlCRjhERjU2Njg3MDgzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Q0Q5RUJFRTk5ODY4ODlFMTExOEU5QkY4REY1NjY4NzA4MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNDlFQkVFOTk4Njg4OUUxMTE4RTlCRjhERjU2Njg3MDgzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgABQAFAwERAAIRAQMRAf/EAHsAAAMBAQAAAAAAAAAAAAAAAAIDBAUBAQEAAAAAAAAAAAAAAAAAAAAAEAABAwIFBAMAAAAAAAAAAAABAAIDEQQhMRIFQWFxgZEiMhMRAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD1y6ubW5JMUjQ49Rj7UG5t9xuNtJqglLWk1LThQoPP3m5XF67VLIQP1bg0eQQf/9k=");
+  opacity: 0.3;
+  animation: matrix 20s linear infinite;
+  pointer-events: none;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px;
+  animation: fadeIn 0.5s ease-in;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.terminal {
+  background: rgba(16, 16, 16, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.1);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 0, 0.05);
+}
+
+.terminal-header {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.05);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.terminal-button:hover {
+  transform: scale(1.1);
+}
+
+.red { 
+  background-color: #ff5f56;
+  box-shadow: 0 0 10px rgba(255, 95, 86, 0.3);
+}
+
+.yellow { 
+  background-color: #ffbd2e;
+  box-shadow: 0 0 10px rgba(255, 189, 46, 0.3);
+}
+
+.green { 
+  background-color: #27c93f;
+  box-shadow: 0 0 10px rgba(39, 201, 63, 0.3);
+}
+
+.terminal-title {
+  color: rgba(0, 255, 0, 0.8);
+  margin-left: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+  font-weight: 500;
+  user-select: none;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.terminal-content {
+  padding: 30px;
+  min-height: 700px;
+  max-height: 75vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: none;
+  font-size: 16px;
+}
+
+.terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.15);
+}
+
+.terminal-line {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  animation: slideFadeIn 0.3s ease-out;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info { 
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.error { 
+  color: #ff5f56;
+  text-shadow: 0 0 10px rgba(255, 95, 86, 0.2);
+}
+
+.command { 
+  color: rgba(0, 255, 0, 0.85);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+}
+
+.terminal-input-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 255, 0, 0.02);
+  pointer-events: none;
+}
+
+.prompt {
+  color: rgba(0, 255, 0, 0.85);
+  margin-right: 8px;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+input {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Fira Code', monospace;
+  font-size: inherit;
+  flex: 1;
+  outline: none;
+  caret-color: rgba(0, 255, 0, 0.85);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Matrix rain effect */
+@keyframes rain {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    margin: 10px;
+    max-width: 95vw;
+  }
+
+  .terminal {
+    border-radius: 8px;
+  }
+
+  .terminal-content {
+    min-height: 600px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .terminal-line {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .app {
+    max-width: 1400px;
+  }
+
+  .terminal-content {
+    min-height: 800px;
+    font-size: 18px;
+  }
+}
+
+/* Add some nice hover effects for interactive elements */
+.terminal-line:hover {
+  background: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
